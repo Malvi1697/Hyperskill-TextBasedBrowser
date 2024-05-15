@@ -43,7 +43,7 @@ args = sys.argv
 dir_name = args[1]
 # dir_name = "tb_tabs"
 
-
+# trying out git
 
 while webpage_url != "exit":
     check = False
