@@ -37,21 +37,42 @@ Twitter and Square Chief Executive Officer Jack Dorsey
 
 webpage_url = None
 webpages_list = ["nytimes.com", nytimes_com, "bloomberg.com", bloomberg_com]
+webpages_url_history = []
 
-# args = sys.argv
-# dir_name = args[1]
-dir_name = "tb_tabs"
+args = sys.argv
+dir_name = args[1]
+# dir_name = "tb_tabs"
+
 
 
 while webpage_url != "exit":
     check = False
-    webpage_url = input("Enter site: ")
-    for webpage in webpages_list:
-        if webpage_url in webpage:
-            check = True
-    if check:
-        site = Website(webpage_url, webpages_list, dir_name)
-        print(site)
-        site.mktab()
+    webpage_url = input()
+
+    if webpage_url != "back":
+        for webpage in webpages_list:
+            if webpage_url in webpage:
+                check = True
+        if check:
+            site = Website(webpage_url, webpages_list, dir_name)
+            print(site)
+            site.mktab()
+            webpages_url_history.append(site.stripped())
+        else:
+            if webpage_url != "exit":
+                print("Invalid URL")
     else:
-        print("Invalid URL")
+        try:
+            webpages_url_history.pop()
+            webpage_url = webpages_url_history[-1]
+            site = Website(webpage_url, webpages_list, dir_name)
+            print(site)
+            site.mktab()
+        except Exception:
+            pass
+
+
+
+
+
+    # print(webpages_url_history)
