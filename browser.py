@@ -43,7 +43,6 @@ args = sys.argv
 dir_name = args[1]
 # dir_name = "tb_tabs"
 
-# trying out git
 
 while webpage_url != "exit":
     check = False
@@ -56,7 +55,7 @@ while webpage_url != "exit":
         if check:
             site = Website(webpage_url, webpages_list, dir_name)
             print(site)
-            site.mktab()
+            site.make_tab()
             webpages_url_history.append(site.stripped())
         else:
             if webpage_url != "exit":
@@ -67,7 +66,7 @@ while webpage_url != "exit":
             webpage_url = webpages_url_history[-1]
             site = Website(webpage_url, webpages_list, dir_name)
             print(site)
-            site.mktab()
+            site.make_tab()
         except Exception:
             pass
 
