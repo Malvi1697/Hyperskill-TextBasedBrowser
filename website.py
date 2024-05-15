@@ -10,7 +10,10 @@ class Website:
     def stripped(self):
         return self.webpage_url.split(".")[0]
 
-    def mktab(self):
+    def print_website(self):
+        print(self.__str__())
+
+    def make_tab(self):
         try:
             os.mkdir(self.dir_name)
         except FileExistsError:

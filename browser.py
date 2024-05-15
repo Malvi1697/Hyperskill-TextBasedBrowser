@@ -39,11 +39,11 @@ webpage_url = None
 webpages_list = ["nytimes.com", nytimes_com, "bloomberg.com", bloomberg_com]
 webpages_url_history = []
 
-args = sys.argv
-dir_name = args[1]
-# dir_name = "tb_tabs"
+# args = sys.argv
+# dir_name = args[1]
+dir_name = "tb_tabs"
 
-
+# trying out git
 
 while webpage_url != "exit":
     check = False
@@ -66,7 +66,7 @@ while webpage_url != "exit":
             webpages_url_history.pop()
             webpage_url = webpages_url_history[-1]
             site = Website(webpage_url, webpages_list, dir_name)
-            print(site)
+            site.print_website()
             site.mktab()
         except Exception:
             pass
