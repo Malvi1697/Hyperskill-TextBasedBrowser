@@ -35,43 +35,41 @@ Twitter and Square Chief Executive Officer Jack Dorsey
  Tuesday, a signal of the strong ties between the Silicon Valley giants.
 '''
 
+
+
+
 webpage_url = None
 webpages_list = ["nytimes.com", nytimes_com, "bloomberg.com", bloomberg_com]
-webpages_url_history = []
 
-args = sys.argv
-dir_name = args[1]
-# dir_name = "tb_tabs"
+# args = sys.argv
+# dir_name = args[1]
+dir_name = "tb_tabs"
 
-
-while webpage_url != "exit":
+while True:
     check = False
     webpage_url = input()
 
-    if webpage_url != "back":
+    if webpage_url == "back":
+        try:
+            site.webpages_url_history.pop()
+            webpage_url = site.webpages_url_history[-1]
+            site = Website(webpage_url, webpages_list, dir_name)
+            site.print_website()
+            site.make_tab()
+        except Exception:
+            pass
+
+    elif webpage_url == "exit":
+        break
+
+    else:
         for webpage in webpages_list:
             if webpage_url in webpage:
                 check = True
         if check:
             site = Website(webpage_url, webpages_list, dir_name)
-            print(site)
+            site.print_website()
             site.make_tab()
-            webpages_url_history.append(site.stripped())
+            site.webpages_url_history.append(site.stripped())
         else:
-            if webpage_url != "exit":
-                print("Invalid URL")
-    else:
-        try:
-            webpages_url_history.pop()
-            webpage_url = webpages_url_history[-1]
-            site = Website(webpage_url, webpages_list, dir_name)
-            print(site)
-            site.make_tab()
-        except Exception:
-            pass
-
-
-
-
-
-    # print(webpages_url_history)
+            print("Invalid URL")

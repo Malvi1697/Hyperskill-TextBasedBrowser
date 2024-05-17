@@ -1,6 +1,6 @@
 import os
 class Website:
-    history = []
+    webpages_url_history = []
     def __init__(self, webpage_url, webpages_list, dir_name):
         self.dir_name = dir_name
         self.webpage_url = webpage_url
